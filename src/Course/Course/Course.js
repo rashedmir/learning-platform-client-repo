@@ -7,9 +7,9 @@ const Course = () => {
     console.log(courses);
     return (
         <div className='flex'>
-            <div className="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 w-2/3">
+            <div className="bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 w-2/3 ml-5">
 
-                <img className="rounded-t-lg" src={course_image} alt="" />
+                <img className="p-3 rounded-t-lg" src={course_image} alt="" />
 
                 <div className="p-5">
 

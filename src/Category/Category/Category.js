@@ -7,7 +7,7 @@ const Category = () => {
     // console.log(courseCategory);
     return (
         <div>
-            <h2>This category has courses: {courseCategory.length}</h2>
+            {/* <h2>This category has courses: {courseCategory.length}</h2> */}
             {
                 courseCategory.map(category => <CourseCardSummary key={category._id} category={category}></CourseCardSummary>)
             }
