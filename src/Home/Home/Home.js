@@ -6,7 +6,7 @@ const Home = () => {
     const allCategory = useLoaderData();
     return (
         <div>
-            <h2>Total courses available: {allCategory.length}</h2>
+            {/* <h2>Total courses available: {allCategory.length}</h2> */}
             <div>
                 {
                     allCategory.map(category => <CourseCardSummary key={category._id} category={category}></CourseCardSummary>)
