@@ -8,7 +8,7 @@ import LeftSideNav from '../LeftSideNav/LeftSideNav';
 
 const Main = () => {
     return (
-        <div>
+        <div className='bg-slate-300'>
             <Header></Header>
             
             <div className="flex flex-wrap overflow-hidden sm:-mx-1 md:mx-72">
