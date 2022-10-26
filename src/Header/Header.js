@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../src/eduonlineLogo.svg'
+import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.log(error))
+    }
     return (
         <>
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
@@ -12,12 +21,28 @@ const Header = () => {
                         <span className="self-center text-3xl font-bold whitespace-nowrap dark:text-white">EduOnline</span>
                     </a>
                     <div className="flex items-center">
-                        <Link to="/login" className="mr-5 text-lg font-medium text-blue-600 dark:text-blue-500 hover:underline">Login</Link>
-                        <Link to="/register" className="mr-5 text-lg font-medium text-blue-600 dark:text-blue-500 hover:underline">Register</Link>
+                        {
+                            user?.uid ?
+                                <>
+                                    <span>{user?.displayName}</span>
+                                    <button className="mr-5 ml-5 text-lg font-medium text-blue-600 dark:text-blue-500 hover:underline" onClick={handleLogOut}>Log out</button>
+                                </>
+                                :
+                                <>
+                                    <Link to="/login" className="mr-5 text-lg font-medium text-blue-600 dark:text-blue-500 hover:underline">Login</Link>
+                                    <Link to="/register" className="mr-5 text-lg font-medium text-blue-600 dark:text-blue-500 hover:underline">Register</Link>
+                                </>
+                        }
                         <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                             <span className="sr-only">Open user menu</span>
-                            <img className="w-14 h-14 rounded-full" src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="user photo" />
+                            {user?.photoURL ?
+                                <img className="w-12 h-12 rounded-full" src={user?.photoURL}></img>
+                                : <img className="w-14 h-14 rounded-full" src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="image" />
+                            }
                         </button>
+                        <div>
+                            
+                        </div>
                     </div>
                 </div>
             </nav>

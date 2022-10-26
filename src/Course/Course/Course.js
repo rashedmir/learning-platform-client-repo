@@ -34,7 +34,7 @@ const Course = () => {
                     <p className='py-2'>Course Details:</p>
                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{details}</p>
                     <hr></hr>
-                    <p className="my-3 font-normal text-gray-700 dark:text-gray-400">Pre-Requisite: {pre_requisite}</p>
+                    <p className="my-3 font-normal text-gray-700 dark:text-gray-400"><span className='font-bold'>Pre-Requisite:</span> {pre_requisite}</p>
                     <Link to={`/category/${category_id}`}>
                         <button type="button" class="text-white bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 hover:bg-gradient-to-br 
                         focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg 
