@@ -49,10 +49,10 @@ const Header = () => {
             </nav>
             <nav className="bg-gray-50 dark:bg-gray-700">
                 <div className="py-3 px-4 mx-auto max-w-screen-xl md:px-6">
-                    <div className="flex items-center">
-                        <ul className="flex flex-row mt-0 mr-6 space-x-8 text-md font-medium">
+                    <div className="">
+                        <ul className="flex flex-row mt-0 space-x-10 text-md font-medium justify-end text-xl">
                             <Link to="#" className="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</Link>
-                            <Link to="#" className="text-gray-900 dark:text-white hover:underline" aria-current="page">Company</Link>
+                            <Link to="#" className="text-gray-900 dark:text-white hover:underline" aria-current="page">FAQ</Link>
                             <Link to="#" className="text-gray-900 dark:text-white hover:underline" aria-current="page">Team</Link>
                             <Link to="#" className="text-gray-900 dark:text-white hover:underline" aria-current="page">Features</Link>
                         </ul>

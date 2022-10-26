@@ -11,13 +11,12 @@ const LeftSideNav = () => {
     }, [])
 
     return (
-        <div className=''>
+        <div>
             <div className='flex items-center'>
-                <img className='w-7 h-7 m-2' src='https://cdn-icons-png.flaticon.com/512/6791/6791242.png' alt='img'/>
-            <h1 className='text-xl font-bold text-gray-600'>Select Category</h1>
-
+                <img className='w-7 h-7 m-2' src='https://cdn-icons-png.flaticon.com/512/6791/6791242.png' alt='img' />
+                <h1 className='text-xl font-bold text-gray-600'>Select Category</h1>
             </div>
-            <hr className='border-1 border-slate-500'></hr>
+            <hr className='border-2 border-slate-300'></hr>
             <div>
                 {
                     categories.map(category => <p key={category}>
