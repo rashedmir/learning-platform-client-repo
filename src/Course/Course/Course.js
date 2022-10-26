@@ -1,5 +1,5 @@
-import { Button } from 'flowbite-react';
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast, Flip, Slide, Zoom } from "react-toastify";
@@ -20,7 +20,8 @@ const notifyEnrolled = () =>
 
 const Course = () => {
     const courses = useLoaderData();
-    const { category_id, title, category, course_image, course_level, details, duration, instructor, instructor_image, price, students, pre_requisite } = courses;
+
+    const { _id, category_id, title, category, course_image, course_level, details, duration, instructor, instructor_image, price, students, pre_requisite } = courses;
     console.log(courses);
     return (
         <div className='flex'>
@@ -54,7 +55,10 @@ const Course = () => {
                     <p className="mb-3 font-normal text-xl text-gray-700 dark:text-gray-400"><span className='font-bold text-sm'>Duration of course:</span> {duration}</p>
                     <p className="mb-3 font-normal text-xl text-gray-700 dark:text-gray-400"><span className='font-bold text-sm'>Level of difficulty:</span> {course_level}</p>
                     <p className="mb-3 font-normal text-xl text-gray-700 dark:text-gray-400"><span className='font-bold text-sm'>Price:</span> {price}</p>
-                    <button onClick={() => notifyEnrolled()} className='bg-green-400 rounded-md p-5 w-full'>Enroll now</button>
+                    {/* <Link to={`/courses/${_id}`} onClick={() => notifyEnrolled()} className='bg-green-400 rounded-md p-5 w-full'>Enroll now</Link> */}
+                    <div className='my-14 text-center'>
+                        <Link className='bg-green-400 rounded-md p-5 w-full' to={`/private/${_id}`} onClick={() => notifyEnrolled()}>Enroll now</Link>
+                    </div>
                     <ToastContainer
                         theme="dark"
                         position="top-center"

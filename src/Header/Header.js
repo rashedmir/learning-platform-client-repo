@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../src/eduonlineLogo.svg'
 import { AuthContext } from '../contexts/AuthProvider/AuthProvider';
-import { FaUser } from 'react-icons/fa';
+
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -15,7 +15,7 @@ const Header = () => {
     return (
         <>
             <nav className="bg-white border-gray-200 dark:bg-gray-900">
-                <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5 h-36 bg-red-500">
+                <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl px-4 md:px-6 py-2.5 h-36">
                     <a href="/" className="flex items-center">
                         <img src={logo} className="w-36 h-96 sm:h-9" alt="Flowbite Logo" />
                         <span className="self-center text-3xl font-bold whitespace-nowrap dark:text-white">EduOnline</span>
@@ -36,8 +36,8 @@ const Header = () => {
                         <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                             <span className="sr-only">Open user menu</span>
                             {user?.photoURL ?
-                                <img className="w-12 h-12 rounded-full" src={user?.photoURL}></img>
-                                : <img className="w-14 h-14 rounded-full" src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="image" />
+                                <img className="w-12 h-12 rounded-full" src={user?.photoURL} alt="img"/>
+                                : <img className="w-14 h-14 rounded-full" src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="img" />
                             }
                         </button>
                         <div>

@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react';
 import logo from '../../../src/eduonlineLogo.svg'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { ToastContainer, toast, Flip, Slide, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const Register = () => {
@@ -9,6 +11,21 @@ const Register = () => {
     const [error, setError] = useState('');
     const [accepted, setAccepted] = useState(false);
     const { createUser, updateUserProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
+
+    const notifyEnrolled = () =>
+        toast.success('Signed up Successfully. You can log in now', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
 
     const handleSubmit = event => {
         event.preventDefault();
@@ -17,7 +34,7 @@ const Register = () => {
         const photoURL = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
         createUser(email, password)
             .then(result => {
@@ -25,6 +42,8 @@ const Register = () => {
                 // console.log(user);
                 setError('');
                 form.reset();
+                
+                
                 handleUpdateUserProfile(name, photoURL);
             })
             .catch(e => {
@@ -38,6 +57,7 @@ const Register = () => {
             displayName: name,
             photoURL: photoURL
         }
+        navigate(from, { replace: true });
         updateUserProfile(profile)
             .then(() => { })
             .catch(error => console.error(error));
@@ -75,13 +95,13 @@ const Register = () => {
                     <form onSubmit={handleSubmit} className='w-11/12 mt-8'>
                         <div class="mb-6">
                             <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Full Name</p>
-                            <input name="name" type="text" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                            <input name="name" type="text" id="f_name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                              focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
                               dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Jhankar Mahbub" />
                         </div>
                         <div class="mb-6">
                             <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Photo Link</p>
-                            <input name="photo" type="text" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+                            <input name="photo" type="text" id="p_link" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
                              focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
                               dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="http://.....com/abcd.jpg .png" />
                         </div>
@@ -104,6 +124,19 @@ const Register = () => {
                         <button type="submit" disabled={!accepted} class="disabled:bg-gray-400 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none 
                         focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600
                          dark:hover:bg-blue-700 dark:focus:ring-blue-800">Sign up</button>
+                        <ToastContainer
+                            theme="dark"
+                            position="top-center"
+                            autoClose={3000}
+                            hideProgressBar={false}
+                            newestOnTop={false}
+                            closeOnClick
+                            rtl={false}
+                            pauseOnFocusLoss={false}
+                            draggable
+                            pauseOnHover
+                        />
+                        <div>{error}</div>
                     </form>
                 </div>
             </div>

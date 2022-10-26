@@ -8,6 +8,7 @@ import Login from '../../Login/Login/Login';
 import Register from '../../Login/Register/Register';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import TermsAndConditions from '../../Others/TermsAndConditions/TermsAndConditions';
+import Error404 from '../../Error404/Error404';
 
 export const routes = createBrowserRouter([
     {
@@ -26,9 +27,14 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/courses/:id',
-                element: <PrivateRoute><Course></Course></PrivateRoute>,
+                element: <Course></Course>,
                 loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
             },
+            {
+                path: '/private/:id',
+                element: <PrivateRoute><Course></Course></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+            }
         ]
     },
     {
@@ -40,8 +46,12 @@ export const routes = createBrowserRouter([
         element: <Register></Register>
     },
     {
-        path:'/terms',
-        element:<TermsAndConditions></TermsAndConditions>
+        path: '/terms',
+        element: <TermsAndConditions></TermsAndConditions>
+    },
+    {
+        path:'/*',
+        element:<Error404></Error404>
     }
 ])
 
