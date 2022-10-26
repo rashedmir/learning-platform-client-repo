@@ -12,8 +12,8 @@ const Header = () => {
                         <span className="self-center text-3xl font-bold whitespace-nowrap dark:text-white">EduOnline</span>
                     </a>
                     <div className="flex items-center">
-                        <Link to="#" className="mr-5 text-lg font-medium text-blue-600 dark:text-blue-500 hover:underline">Login</Link>
-                        <Link to="#" className="mr-5 text-lg font-medium text-blue-600 dark:text-blue-500 hover:underline">Register</Link>
+                        <Link to="/login" className="mr-5 text-lg font-medium text-blue-600 dark:text-blue-500 hover:underline">Login</Link>
+                        <Link to="/register" className="mr-5 text-lg font-medium text-blue-600 dark:text-blue-500 hover:underline">Register</Link>
                         <button type="button" className="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                             <span className="sr-only">Open user menu</span>
                             <img className="w-14 h-14 rounded-full" src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="user photo" />
