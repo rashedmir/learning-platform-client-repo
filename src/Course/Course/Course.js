@@ -2,6 +2,21 @@ import { Button } from 'flowbite-react';
 import React from 'react';
 import { useLoaderData } from 'react-router';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast, Flip, Slide, Zoom } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+
+const notifyEnrolled = () =>
+    toast.success('Enrolled Successfully', {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
+
 
 const Course = () => {
     const courses = useLoaderData();
@@ -31,15 +46,27 @@ const Course = () => {
             <div className=" bg-slate-200 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 w-1/3 h-1/2 ml-5">
                 <div className='flex items-center'>
                     <img className="m-5 w-14 rounded-full" src={instructor_image} alt="" />
-                    <h5 className="mb-2 text-sm font-bold tracking-tight text-gray-900 dark:text-white">Instructor: {instructor}</h5>
+                    <h5 className="mb-2 text-lg font-bold tracking-tight text-gray-900 dark:text-white"><span className='text-sm mr-24'>Instructor:</span> {instructor}</h5>
                 </div>
                 <div className="p-5">
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Category: {category}</p>
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Enrolled Student: {students}</p>
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Duration of course: {duration}</p>
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Level of difficulty: {course_level}</p>
-                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Price: {price}</p>
-                    <button className='bg-green-400 rounded-md p-5 w-full'>Enroll now</button>
+                    <p className="mb-3 font-normal text-xl text-gray-700 dark:text-gray-400"><span className='font-bold text-sm'>Category:</span> {category}</p>
+                    <p className="mb-3 font-normal text-xl text-gray-700 dark:text-gray-400"><span className='font-bold text-sm'>Enrolled Student:</span> {students}</p>
+                    <p className="mb-3 font-normal text-xl text-gray-700 dark:text-gray-400"><span className='font-bold text-sm'>Duration of course:</span> {duration}</p>
+                    <p className="mb-3 font-normal text-xl text-gray-700 dark:text-gray-400"><span className='font-bold text-sm'>Level of difficulty:</span> {course_level}</p>
+                    <p className="mb-3 font-normal text-xl text-gray-700 dark:text-gray-400"><span className='font-bold text-sm'>Price:</span> {price}</p>
+                    <button onClick={() => notifyEnrolled()} className='bg-green-400 rounded-md p-5 w-full'>Enroll now</button>
+                    <ToastContainer
+                        theme="dark"
+                        position="top-center"
+                        autoClose={3000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss={false}
+                        draggable
+                        pauseOnHover
+                    />
                 </div>
             </div>
         </div>
