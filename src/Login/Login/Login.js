@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
-import logo from '../../../src/eduonlineLogo.svg'
+
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import logo from '../../../src/eduonline_logo.png';
 
 const Login = () => {
 

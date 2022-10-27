@@ -9,6 +9,7 @@ import Register from '../../Login/Register/Register';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import TermsAndConditions from '../../Others/TermsAndConditions/TermsAndConditions';
 import Error404 from '../../Error404/Error404';
+import Blog from '../../Blog/Blog';
 
 export const routes = createBrowserRouter([
     {
@@ -52,6 +53,10 @@ export const routes = createBrowserRouter([
     {
         path:'/*',
         element:<Error404></Error404>
+    },
+    {
+        path:'/blog',
+        element:<Blog></Blog>
     }
 ])
 
