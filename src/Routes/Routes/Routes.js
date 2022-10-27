@@ -19,22 +19,22 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch(`http://localhost:5000/courses`)
+                loader: () => fetch(`https://b610-lerning-platform-server-side-rashedmir.vercel.app/courses`)
             },
             {
                 path: '/category/:id',
                 element: <Category></Category>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://b610-lerning-platform-server-side-rashedmir.vercel.app/category/${params.id}`)
             },
             {
                 path: '/courses/:id',
                 element: <Course></Course>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://b610-lerning-platform-server-side-rashedmir.vercel.app/courses/${params.id}`)
             },
             {
                 path: '/private/:id',
                 element: <PrivateRoute><Course></Course></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://b610-lerning-platform-server-side-rashedmir.vercel.app/courses/${params.id}`)
             }
         ]
     },
@@ -51,12 +51,12 @@ export const routes = createBrowserRouter([
         element: <TermsAndConditions></TermsAndConditions>
     },
     {
-        path:'/*',
-        element:<Error404></Error404>
+        path: '/*',
+        element: <Error404></Error404>
     },
     {
-        path:'/blog',
-        element:<Blog></Blog>
+        path: '/blog',
+        element: <Blog></Blog>
     }
 ])
 

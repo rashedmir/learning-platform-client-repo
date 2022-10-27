@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import logo from '../../../src/eduonline_logo.png';
+import Footer from '../../Footer/Footer';
 
 const Login = () => {
 
@@ -31,7 +32,16 @@ const Login = () => {
             })
             .catch(error => {
                 console.error(error)
-                setError(error.message);
+                if (error.code === "auth/wrong-password") {
+                    setError("Wrong username or password")
+                }
+                else if (error.code === "auth/user-not-found") {
+                    setError("Email not registered")
+                }
+                else {
+
+                    setError(error.message);
+                }
             })
     }
 
@@ -47,7 +57,7 @@ const Login = () => {
 
     return (
         <div className='bg-gray-200 h-screen'>
-            <div className='flex flex-col items-center'>
+            <div className='flex flex-col items-center md:mb-48 mb-24'>
                 {/* <Header></Header> */}
                 <div className=''>
                     <Link to='/'>
@@ -57,7 +67,7 @@ const Login = () => {
                         </div>
                     </Link>
                 </div>
-                <div className='flex flex-col items-center w-1/3 bg-white rounded-lg mx-16 text-gray-800 p-5'>
+                <div className='flex flex-col items-center md:w-1/3 bg-white rounded-lg mx-16 text-gray-800 p-5 text-center'>
                     <div>
                         <h1 className='font-bold text-3xl mb-2'>Login to your account</h1>
                     </div>
@@ -88,11 +98,12 @@ const Login = () => {
                             focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white 
                             dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
                         </div>
-                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
+                        <button type="submit" class="mb-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Login</button>
                         <div>{error}</div>
                     </form>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

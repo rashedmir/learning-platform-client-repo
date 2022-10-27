@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { ToastContainer, toast, Flip, Slide, Zoom } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Footer from '../../Footer/Footer';
 
 
 const Register = () => {
@@ -42,8 +43,8 @@ const Register = () => {
                 // console.log(user);
                 setError('');
                 form.reset();
-                
-                
+
+
                 handleUpdateUserProfile(name, photoURL);
             })
             .catch(e => {
@@ -80,7 +81,7 @@ const Register = () => {
                         </div>
                     </Link>
                 </div>
-                <div className='flex flex-col items-center w-1/3 bg-white rounded-lg mx-16 text-gray-800 p-5'>
+                <div className='flex flex-col items-center md:w-1/3 bg-white rounded-lg mx-16 text-gray-800 p-5'>
                     <div>
                         <h1 className='font-bold text-3xl mb-2'>Register account</h1>
                     </div>
@@ -140,6 +141,7 @@ const Register = () => {
                     </form>
                 </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };
